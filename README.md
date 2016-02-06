@@ -17,10 +17,14 @@
 - Emacs in one year (its almost two years now)
 - Editor war and anti-RSI (quite serious, I can feel it)
 
-
-
-
 ### Template forked from Hux ###
-- [View Boilerplate &rarr;](http://huangxuan.me/huxblog-boilerplate/)
-- [View Live Hux Blog &rarr;](http://huangxuan.me)
-- If you like Hux Blog, Please star [huxpro.github.io repo](https://github.com/Huxpro/huxpro.github.io) instead of this! Thank you!
+- [View Live Hux Blog](http://huangxuan.me)
+- [Installation of this template refers to zyddora on Github](https://zyddora.github.io/)
+
+### Installation ###
+- delete CNAME if you don't need name redirection, comment and google statistics
+- change `_config.yml` as Hux's readme
+- if feature tag is used, set variable in `_config.yml` to 0 (as zyddora did)
+- replace all images in `/img/`
+- revise this readme, and thanks all helpful hacker
+- If you want to improve this template further, learn front end dev.
