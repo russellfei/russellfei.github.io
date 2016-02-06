@@ -1,0 +1,171 @@
+---
+layout: page
+title: "About"
+description: "Try to light up the dark"
+header-img: "img/about-bg.jpg"
+---
+
+<!-- Language Selector -->
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <option value="1"> 英文 English </option>
+</select>
+
+<!-- Chinese Version -->
+<div class="zh post-container">
+
+    <!--copied from markdown -->
+    <blockquote><p>至人无己，神人武功，圣人无名。<br>
+    倚楼听风雨，淡看江湖路</p></blockquote>
+
+    <p>Hello world！我是<strong>russell</strong>，程序员 &amp; 预备攻城狮，</p>
+
+    <p><a href="http://www.lmars.whu.edu.cn/">武汉大学</a> 学习图像处理中的黑魔法</p>
+
+    <h5>Talks</h5>
+
+    <ul>
+    <li>LaTeX 简历制作与排版最简入门. 2015</li>
+    </ul>
+
+
+    <h5>Resumes</h5>
+
+    <ul>
+    <li><a href="/attach/">TBD</a></li>
+    </ul>
+
+</div>
+
+<!-- English Version -->
+<div class="en post-container">
+    <blockquote><p>Let your arm enfold us, through the dark of night <br>
+    Will you angel hold us, till we see the light.</p></blockquote>
+
+    <p>My name is <strong>russell</strong>，you can call me nickname <strong>rus</strong>. I studied Image Processing in <a href="http://www.whu.edu.cn">Wuhan University</a></p>
+
+    <p>Soon to be an engineer, I'm learning to use several powerful tools, GNU Emacs, Vim, LaTeX, Lua, C/C++, Matlab and Python. Hacking by oneself is essential, but hacking after masters is also rewarding, here are my personal masterlist:</p>
+    <ul>
+      <li> Emacs: purcell, xah lee, sachua chua and redguardtoo  </li>
+      <li> Vim: bling, more on vimawesome <-- really awesome website </li>
+      <li> LaTeX: wikibooks, sharelatex </li>
+      <li> Linux basics: birdman </li>
+    </ul>
+
+    <h5>Talks</h5>
+
+    <ul>
+    <li>Get your CVPS in the right way. 2015</li>
+    </ul>
+
+    <h5>Resumes</h5>
+
+    <!-- <ul> -->
+    <!-- <li><a href="/attach/"</a></li> -->
+    <!-- </ul> -->
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    // get nodes
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    var $select = document.querySelector("select");
+
+    // bind hashchange event
+    window.addEventListener('hashchange', _render);
+
+    // handle render
+    function _render(){
+        var _hash = window.location.hash;
+        // en
+        if(_hash == "#en"){
+            $select.selectedIndex = 1;
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        // zh by default
+        }else{
+            // not trigger onChange, otherwise cause a loop call.
+            $select.selectedIndex = 0;
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }
+    }
+
+    // handle select change
+    function onLanChange(index){
+        if(index == 0){
+            window.location.hash = "#zh"
+        }else{
+            window.location.hash = "#en"
+        }
+    }
+
+    // init
+    _render();
+</script>
+
+
+
+{% if site.duoshuo_username %}
+<!-- 多说评论框 start -->
+<div class="comment">
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
+
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- Duoshuo hacking -->
+<input id="dsUser" type="hidden" value="{{site.duoshuo_username}}"  />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = '{{site.duoshuo_username}}';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
+
+
+{% if site.disqus_username %}
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}
